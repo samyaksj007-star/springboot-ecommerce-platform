@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- Below 2 meta tags are giving the csrf token and header name to productDretails.js (Spring security functionality) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
+  <title>Sakura Scented – Login</title>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+	
+	<link rel="stylesheet" href="/css/style.css" />
+	<!--cart.css will work from header.html -->
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/wishlist.css" />
+    
+    <!-- Google Sign-In SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- REQUIRED: Your Google Client ID -->
+  <meta name="google-signin-client_id" content="599430361630-2mtdrdvsf6sj7k5fg14ksuldvanenmqv.apps.googleusercontent.com" />  
+    
+</head>
+<body>
+
+  <header th:replace="header :: header1(${website})"></header>
+
+  <div class="content">
+  <div class="login-container">
+    <h2>LOGIN</h2>
+
+    <div class="google-signin-wrapper">
+	  <div id="g_id_onload"
+	       data-client_id="599430361630-2mtdrdvsf6sj7k5fg14ksuldvanenmqv.apps.googleusercontent.com"
+	       data-context="signin"
+	       data-ux_mode="popup"
+	       data-callback="handleCredentialResponse"
+	       data-auto_prompt="false">
+	  </div>
+	
+	  <div class="g_id_signin"
+	       data-type="standard"
+	       data-shape="rectangular"
+	       data-theme="outline"
+	       data-text="sign_in_with"
+	       data-size="large"
+	       data-logo_alignment="left">
+	  </div>
+	</div>
+
+    <!-- Email/Password form -->
+    <p>Please enter your Email and Password:</p>
+    <form th:action="@{/loginUser}" method="post">
+      <p th:if="${error}" th:text="${error}" id="error-message" style="color:red; display:none;"></p>
+      
+      <input type="email" name="email" placeholder="Email" required />
+      
+      <div class="password-container">
+        <input type="password" name="password" placeholder="Password" required />
+        <a href="#" class="forgot">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="login-button">LOGIN</button>
+    </form>
+
+    <div class="signup">
+      Don't have an account? <a href="/registerUser">Create one</a>
+    </div>
+  </div>
+</div>
+  
+  
+  <!-- include cart.js globally in every page -->
+  <script src="/js/cart.js"></script>
+  <!-- include this for wishlist functionality globally in every page -->
+  <script src="/js/header.js"></script>
+  <script src="/js/login.js"></script>
+
+  <footer th:replace="footer :: footer1(${website})"></footer>
+
+</body>
+</html>
+ 

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Address</title>
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Modal styling */
+    .address-modal {
+      border-radius: 12px;
+      padding: 10px 20px;
+    }
+
+    /* Inputs & selects */
+    .address-modal .form-control,
+    .address-modal .form-select {
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .address-modal .form-control:focus,
+    .address-modal .form-select:focus {
+      border-color: #b38b2f; /* goldish border */
+      box-shadow: none;
+    }
+
+    /* Checkbox */
+    .address-modal .form-check-label {
+      font-size: 14px;
+    }
+
+    /* Buttons */
+    .address-modal .btn {
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+
+    .address-modal .btn-primary {
+      background-color: #b38b2f;  /* gold */
+      border-color: #b38b2f;
+    }
+
+    .address-modal .btn-primary:hover {
+      background-color: #967524;
+      border-color: #967524;
+    }
+
+    .address-modal .btn-outline-secondary {
+      border-radius: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Add Address Modal -->
+  <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content address-modal">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="addAddressLabel">Add address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <!-- Default address checkbox -->
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="isDefault">
+              <label class="form-check-label" for="isDefault">This is my default address</label>
+            </div>
+
+            <!-- Country -->
+            <div class="mb-3">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country">
+                <option selected>India</option>
+              </select>
+            </div>
+
+            <!-- Name (2 fields in one row) -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="First name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Last name" required>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Address" required>
+            </div>
+
+            <!-- City, State, Pin -->
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="City" required>
+              </div>
+              <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="State" required>
+              </div>
+              <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="PIN code" required>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="row mb-3">
+              <div class="col-3">
+                <select class="form-select">
+                  <option selected>+91</option>
+                </select>
+              </div>
+              <div class="col-9">
+                <input type="tel" class="form-control" placeholder="Phone number" required>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Demo: Trigger button -->
+  <button class="btn btn-primary mt-3 ms-3" data-bs-toggle="modal" data-bs-target="#addAddressModal">Open Add Address</button>
+</body>
+</html>

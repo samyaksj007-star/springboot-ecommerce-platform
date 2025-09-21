@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header Fragment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/cart.css" />
+  <link rel="stylesheet" href="/css/wishlist.css" />
+  
+</head>
+<body data-user-id="${loggedInUser.id}">
+
+<!-- Entire content including cart panel is inside fragment -->
+<div th:fragment="header1(website)">
+
+  <!-- Header Top -->
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="/image/logo.jpeg" alt="Logo" class="header-logo">
+    </div>
+    <a href="/collections" style="text-decoration: none; color: inherit;">
+      <div class="brand">SAKURA SCENTED CANDLE</div>
+    </a>
+    <div class="top-right">
+      <a th:href="${session.loggedInUser != null ? '/user/account' : '/login'}"><i class="fas fa-user"></i></i></a>
+      <i class="fas fa-search" onclick="toggleSearch()"></i>
+      <i id="wishlistBtn" class="far fa-heart" style="cursor: pointer;"></i>
+      <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+    </div>
+  </div>
+
+  <!-- Middle Nav -->
+  <div class="middle-nav">
+    <a href="#">ABOUT US</a>
+    <a href="#">SHOP</a>
+    <a href="#">CLOTHING</a>
+    <a href="#">DORI LIVING</a>
+    <a href="#">CORPORATE GIFTS</a>
+    <a href="#">COLLABORATIONS</a>
+    <a href="#">CAFE DORI</a>
+  </div>
+
+  <!-- Search -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search..." />
+      <i class="fas fa-times close-btn" onclick="toggleSearch()"></i>
+    </div>
+  </div>
+
+<!-- Wishlist Modal -->
+
+<div id="wishlistModal" style="display:none;">
+  <div class="wishlist-content">
+    
+    <div class="modal-header">
+      <span class="wishlist-title">
+        <i class="fas fa-heart" style="color:gold;"></i> My Wishlist
+      </span>
+      <span id="closeModalBtn">&times;</span>
+    </div>
+    <hr>
+    <!-- Hidden when logged in -->
+	<div id="wishlistLoginMessage" class="login-message" 
+	     th:unless="${loggedInUser != null}">
+	  Please login to save your wishlist across devices. 
+	  <a href="/login">LOGIN</a>
+	</div>
+
+
+    <div id="wishlistContent">
+      Repeat this block for each product in wishlist
+      <div class="wishlist-item">
+		  <img src="..." class="wishlist-image" />
+		
+		  <div class="wishlist-details">
+		    <a href="/productDetails/1" class="product-link">
+		      <h4>Product Name</h4>
+		    </a>
+		    <p>₹999</p>
+		  </div>
+		
+		  <span class="delete-icon" onclick="removeFromWishlist(1)">&times;</span>
+	 </div>
+    </div>
+
+    <div class="modal-footer"></div>
+  </div>
+</div>
+
+
+  <!-- Cart Panel: now inside fragment -->
+    
+  <div class="cart-panel" id="cartPanel">
+	  <div class="cart-header">
+	    <h2>CART</h2>
+	    <button class="close-btn" onclick="toggleCart()">×</button>
+	  </div>
+
+	  <div class="cart-content">
+	    <p class="empty-cart">Your cart is empty.</p>
+	  </div>
+
+	  <div class="cart-footer">
+	    <p class="note">Tax included, discount and shipping will be calculated at checkout</p>
+	    <button class="checkout-btn">CHECKOUT — ₹0</button>
+	  </div>
+  </div>
+
+</div>
+<script src="/js/cart.js"></script>
+<!-- include this for wishlist functionality globally in every page -->
+<script src="/js/header.js"></script>
+
+</body>
+</html>

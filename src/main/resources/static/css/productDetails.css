@@ -1,0 +1,166 @@
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .image-gallery {
+      flex-basis: 45%;
+      max-width: 500px;
+    }
+    
+    * {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+	
+	html, body {
+	  margin: 0;
+	  padding: 0;
+	}
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+    }
+
+    .thumbnails {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .thumbnails img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    
+    .selected-thumbnail {
+	  border: 2px solid #000 !important;
+	}
+
+    .product-info {
+      flex-basis: 45%;
+      max-width: 500px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+    .quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.quantity-controls button {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #555;
+}
+
+.quantity-controls #quantity {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+    
+
+    .add-to-cart {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .expandable-section {
+      border-top: 1px solid #ccc;
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+
+    .expand-header {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .expand-content {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .expand-content.active {
+      display: block;
+    }
+
+    .fragrance {
+      margin: 1rem 0;
+    }
+
+    .fragrance-list {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .fragrance-item {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .fragrance-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+
+    .selected-fragrance img {
+      border: 2px solid #000;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+      .image-gallery,
+      .product-info {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }

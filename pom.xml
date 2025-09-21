@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.spring.sakura</groupId>
+	<artifactId>SakuraScentedCandle</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SakuraScentedCandle</name>
+	<description>Sakura Scented Candle project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<!-- Google OAuth2 Client Dependency -->
+    <dependency>
+        <groupId>com.google.auth</groupId>
+        <artifactId>google-auth-library-oauth2-http</artifactId>
+        <version>0.26.0</version>  <!-- Use the latest version -->
+    </dependency>
+
+    <!-- Google API Client Library -->
+    <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>1.34.1</version>  <!-- Use the latest version -->
+    </dependency>
+
+    <!-- Google API Services OAuth2 -->
+    <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-oauth2 -->
+	<dependency>
+	    <groupId>com.google.apis</groupId>
+	    <artifactId>google-api-services-oauth2</artifactId>
+	    <version>v2-rev157-1.25.0</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.google.http-client</groupId>
+	    <artifactId>google-http-client</artifactId>
+	    <version>1.41.8</version> <!-- Match with your jackson2 version -->
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.google.http-client</groupId>
+	    <artifactId>google-http-client-jackson2</artifactId>
+	    <version>1.41.8</version> <!-- Use latest if needed -->
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.razorpay</groupId>
+	    <artifactId>razorpay-java</artifactId>
+	    <version>1.4.5</version>
+	</dependency>
+
+	
+	<!-- This below dependency is used to give the validation check which is used in form.html file for username and email-->
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+		    <groupId>jakarta.validation</groupId>
+		    <artifactId>jakarta.validation-api</artifactId>
+		</dependency>
+		
+		<!-- This below dependency is used to give the validation check which is used in form.html file for username and email-->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		</dependency>
+	
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

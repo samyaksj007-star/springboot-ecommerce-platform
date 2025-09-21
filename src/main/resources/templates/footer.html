@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Footer Page</title>
+</head>
+<body>
+	
+	<footer id="fragmentTag" th:fragment="footer1(website)">
+  <style>
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
+      background-color: #fff;
+      color: #333;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .footer-container h3 {
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-container p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .footer-container ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-container ul li {
+      margin-bottom: 10px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .footer-container .social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .footer-container .social-icons i {
+      font-size: 20px;
+      color: #444;
+      cursor: pointer;
+    }
+
+    .newsletter-input {
+      padding: 14px;
+      width: 100%;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .subscribe-btn {
+      background-color: #1e1e1e;
+      color: #f3c977;
+      padding: 14px 24px;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      padding: 30px 20px 15px;
+    }
+    
+    .footer-divider {
+      height: 1px;
+      background-color: #ccc;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+  </style>
+  
+  <!--Horizontal Line Divider -->
+  <div class="footer-divider"></div>
+
+  <!-- Main Footer Grid -->
+  <div class="footer-container">
+    <!-- About Section -->
+    <div>
+      <h3>ABOUT NAPPA DORI</h3>
+      <p>
+        Nappa Dori is a tribute to quintessential Indian sensibilities, blended perfectly with contemporary interpretations in design, material and craftsmanship.
+        The Indian love story being a global one, aspires everyone to the nostalgia, mysticism and romance of the historic landmarks, vibrant culture, landscape and
+        an endless collection of eclectic modern icons.
+      </p>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-x-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest-p"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+
+    <!-- Important Links -->
+    <div>
+      <h3>IMPORTANT LINKS</h3>
+      <ul>
+        <li>Catalogue</li>
+        <li>Stores</li>
+        <li>Gift Cards</li>
+        <li>Corporate Gifts</li>
+        <li>Press</li>
+        <li>Contact</li>
+        <li>Terms & Conditions</li>
+        <li>Privacy Policy</li>
+        <li>Track Order</li>
+      </ul>
+    </div>
+
+    <!-- Main Menu -->
+    <div>
+      <h3>MAIN MENU</h3>
+      <ul>
+        <li>About Us</li>
+        <li>Collaborations</li>
+        <li>Dori Chronicles</li>
+        <li>Cafe Dori</li>
+        <li>Club Dori</li>
+        <li>Journal</li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h3>NEWSLETTER</h3>
+      <p>Subscribe to stay updated about new products, promotional offers and more.</p>
+      <input type="email" class="newsletter-input" placeholder="Enter your email address" />
+      <button class="subscribe-btn">SUBSCRIBE</button>
+    </div>
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    © NAPPA DORI &nbsp;&nbsp;|&nbsp;&nbsp; Digital Impressions
+    <h2 th:text="${website}"></h2>
+  </div>
+
+  <!-- Load Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</footer>
+	
+	
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Below 2 meta tags are giving the csrf token and header name to productDretails.js (Spring security functionality) -->
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
+  <title th:text="${product.name}">Product</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/cart.css">
+  <link rel="stylesheet" href="/css/productDetails.css" />
+  <link rel="stylesheet" href="/css/wishlist.css" />
+  
+</head>
+<body th:data-user-id="${session.loggedInUser != null ? session.loggedInUser.id : null}">
+
+ <header th:replace="header :: header1(${website})"></header>
+<div class="product-container" style="margin-top: 40px; margin-bottom: 40px;">
+
+  <!-- Image Gallery -->
+  <div class="image-gallery">
+    <img id="mainImage" class="main-image"
+	     th:if="${product.image1 != null}"
+	     th:src="@{${product.image1}}"
+	     alt="Main Product Image" />
+
+	<img id="mainImage" class="main-image"
+	     th:if="${product.image1 == null and !#lists.isEmpty(product.images)}"
+	     th:src="@{${product.images[0]}}"
+	     alt="Main Product Image" />
+
+    <div class="thumbnails">
+		  <img th:each="img : ${product.images}" th:src="@{${img}}"
+		       class="thumbnail"
+		       onclick="selectThumbnail(this)" alt="Thumbnail"/>
+	</div>
+  </div>
+
+  <!-- Product Info -->
+  <div class="product-info">
+    <h2 th:text="${product.name}" style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; color: #222; letter-spacing: 0.5px;">
+  		Product Name
+	</h2>
+    <div class="price">MRP ₹<span th:text="${product.price}">0.00</span></div>
+
+    <!-- Fragrance Section -->
+    <div class="fragrance">
+      <div style="margin-bottom: 0.5rem;">
+        <span style="font-weight: bold;">Fragrance:</span>
+        <span id="selectedFragrance"
+              th:text="${#lists.isEmpty(product.fragrance.entrySet()) ? '' : product.fragrance.entrySet().iterator().next().key}">
+          Default Fragrance
+        </span>
+      </div>
+
+      <div class="fragrance-list">
+        <div class="fragrance-item"
+             th:each="entry : ${product.fragrance.entrySet()}"
+             th:attr="data-name=${entry.key}"
+             onclick="selectFragrance(this)">
+          <img th:src="@{${entry.value}}" alt="Fragrance Image" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Quantity -->
+    <div class="quantity-controls" style="margin-bottom: 20px;">
+      <button onclick="adjustQuantity(-1)">-</button>
+      <span id="quantity">1</span>
+      <button onclick="adjustQuantity(1)">+</button>
+    </div>
+
+    <!-- Add to Cart -->
+    <!-- ATYAO6XU -->
+   <!--  <button class="add-to-cart"
+        th:attr="data-id=${product.id}, data-name=${product.name}, data-price=${product.price}">
+  		ADD TO CART
+	</button> !-->
+	<button class="add-to-cart"
+    th:attr="
+        data-id=${product.id},
+        data-name=${product.name},
+        data-price=${product.price},
+        data-image=${product.image1 != null ? product.image1 : (product.images != null && !#lists.isEmpty(product.images) ? product.images[0] : '/image/default.png')}
+    ">
+    ADD TO CART
+</button>
+
+
+    <!-- Product Description -->
+    <div class="expandable-section">
+      <div class="expand-header" onclick="toggleSection('desc')">
+        <span>PRODUCT DESCRIPTION</span>
+        <span id="desc-toggle">+</span>
+      </div>
+      <div id="desc" class="expand-content" th:text="${product.description}"></div>
+    </div>
+
+    <!-- Dimensions -->
+    <div class="expandable-section">
+      <div class="expand-header" onclick="toggleSection('dim')">
+        <span>DIMENSIONS</span>
+        <span id="dim-toggle">+</span>
+      </div>
+      <div id="dim" class="expand-content" th:text="${product.dimensions}"></div>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="/js/productDetails.js"></script>
+<!-- include cart.js globally in every page -->
+<script src="/js/cart.js"></script>
+<!-- include this for wishlist functionality globally in every page -->
+<script src="/js/header.js"></script>
+
+<footer th:replace="footer :: footer1(${website})"></footer>
+
+</body>
+</html>

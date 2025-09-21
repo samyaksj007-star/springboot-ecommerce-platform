@@ -1,0 +1,43 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+   .carousel {
+	  width: 100%;
+	  max-height: 60vh;
+	  overflow: hidden;
+	  background-color: black; /* To fill side gaps */
+	  /* z-index: auto !important; */
+	}
+	
+	
+	.carousel-item {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center; /* Centers image vertically */
+	  height: 60vh;
+	  /* z-index: auto !important; */
+	}
+	
+	.carousel-item img {
+	  width: 100%;
+	  height: 60vh;       /* Keep your perfect height */
+	  object-fit: fill;   /* Stretches image horizontally */
+	  display: block;
+	  /* z-index: auto !important; */
+	}
+	
+	
+	.carousel-control-prev,
+	.carousel-control-next {
+	  top: 50% !important;
+	  transform: translateY(-50%);
+	  bottom: unset; /* Remove Bootstrap default */
+	}
