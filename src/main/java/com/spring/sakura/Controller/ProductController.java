@@ -24,7 +24,7 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepo;
 	
-	@GetMapping("/collections")
+	@GetMapping("/")
 	public String collectionsPageHandler(Model model) {
 		System.out.println("In collections Page Handler");
 		List<Products> products = productService.getAllProducts();

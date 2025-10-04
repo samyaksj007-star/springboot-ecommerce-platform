@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/samyaksj007-star/springboot-ecommerce-platform.git'
+                git branch: 'jenkins-test', url: 'https://github.com/samyaksj007-star/springboot-ecommerce-platform.git'
             }
         }
 
